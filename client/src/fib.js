@@ -24,6 +24,16 @@ class Fib extends Component {
             seenIndexes: seenIndexes.data
         });
     }
+    
+    handleSubmit = async (event) => {
+        event.preventDefault();
+    
+        await axios.post('/api/values', {
+          index: this.state.index,
+        });
+        this.setState({ index: '' });
+      };
+
     renderseenIndexes(){
         return this.state.seenIndexes.map(({number}) => number).join(',');
     }
